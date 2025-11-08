@@ -1,0 +1,5 @@
+include:
+  - authentik/docker-compose.yml
+
+#  - nginx/docker-compose.yml :: Nginx not entirely necesary for development;
+# can make thing a pain.

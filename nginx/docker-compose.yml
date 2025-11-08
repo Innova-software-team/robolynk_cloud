@@ -1,0 +1,14 @@
+services:
+  nginx:
+    image: nginx
+    volumes:
+       - ./templates:/etc/nginx/templates
+       - ../dev-certificates:/certificates
+    ports:
+       - "8080:80"
+       - "8443:443"
+       - "9443:9443"
+       - "9000:9000"
+    depends_on:
+       - authentik_server
+    restart: unless-stopped
