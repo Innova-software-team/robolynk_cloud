@@ -1,7 +1,6 @@
 # Orders Server
-
 This server combines the restaurants, carts, and orders services into a single server.
-
+Each of these should have their own path prefix (e.g. /restaurants), services, controllers, and repositories. 
 
 ## Tips
 - This server will depend on other services, so during development, you should use ```docker compose up``` in the main 
