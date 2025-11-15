@@ -38,9 +38,7 @@ services:
     - ${COMPOSE_PORT_HTTPS:-9443}:9443
     restart: unless-stopped
     volumes:
-    - ./media:/media
-    - ./custom-templates:/templates
-    - ./blueprints:/blueprints
+    - ./blueprints/robolynk-dev.yaml:/blueprints/robolynk-dev.yaml
   authentik_worker:
     command: worker
     depends_on:
@@ -59,7 +57,6 @@ services:
     user: root
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-    - ./media:/media
     - ../dev-certificates:/certs
-    - ./custom-templates:/templates
+    - ./blueprints/robolynk-dev.yaml:/blueprints/robolynk-dev.yaml
 

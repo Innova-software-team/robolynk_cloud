@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "931c4744-e217-4f1c-8b4d-26df2e5ac8a3",
+		"name": "Authenticated",
+		"description": "Put authenticated requests into this collection and set Auth Type to \"Inherit from parent\", as this collection has authentication configured.\n\nAlternatively you can copy the auth config to another collection to better organise your tests.\n\nThe \"Get access token\" request is an alternative way to fetch a JWT.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50087553",
+		"_collection_link": "https://daanyalshareef-4487506.postman.co/workspace/Daanyal-Shareef's-Workspace~51f6812b-c69d-4eba-8ea7-0b8c94f81088/collection/50087553-931c4744-e217-4f1c-8b4d-26df2e5ac8a3?action=share&source=collection_link&creator=50087553"
+	},
+	"item": [
+		{
+			"name": "Get access token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "cufoG0Y4ljAYVLmLUqozRfuEm0alhrlerZXV7T03",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "dev-robolynk-user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "FtdaKAcNEd1EMmVBKlawhor6Z4hbqFrUCWY8IG5zyQ21RCPdNcGLxoqtME7E",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:9443/application/o/token/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"application",
+						"o",
+						"token",
+						""
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [
+					{
+						"key": "grant_type",
+						"value": "client_credentials",
+						"enabled": false,
+						"send_as": "request_body"
+					},
+					{
+						"key": "client_id",
+						"value": "cufoG0Y4ljAYVLmLUqozRfuEm0alhrlerZXV7T03",
+						"enabled": false,
+						"send_as": "request_body"
+					},
+					{
+						"key": "username",
+						"value": "dev-robolynk-user",
+						"enabled": true,
+						"send_as": "request_body"
+					},
+					{
+						"key": "password",
+						"value": "FtdaKAcNEd1EMmVBKlawhor6Z4hbqFrUCWY8IG5zyQ21RCPdNcGLxoqtME7E",
+						"enabled": true,
+						"send_as": "request_body"
+					},
+					{
+						"key": "scope",
+						"value": "",
+						"enabled": false,
+						"send_as": "request_body"
+					}
+				],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenName",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "dev-robolynk-user",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "FtdaKAcNEd1EMmVBKlawhor6Z4hbqFrUCWY8IG5zyQ21RCPdNcGLxoqtME7E",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "cufoG0Y4ljAYVLmLUqozRfuEm0alhrlerZXV7T03",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://localhost:9443/application/o/token/",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
