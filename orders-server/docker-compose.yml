@@ -1,5 +1,5 @@
 services:
-  postgresql:
+  orders_server_db:
     env_file:
     - .env
     environment:

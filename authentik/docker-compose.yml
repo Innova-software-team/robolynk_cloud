@@ -1,5 +1,5 @@
 services:
-  postgresql:
+  auth_db:
     env_file:
     - .env
     environment:
@@ -21,12 +21,12 @@ services:
   authentik_server:
     command: server
     depends_on:
-      postgresql:
+      auth_db:
         condition: service_healthy
     env_file:
     - .env
     environment:
-      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__HOST: auth_db
       AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
@@ -42,12 +42,12 @@ services:
   authentik_worker:
     command: worker
     depends_on:
-      postgresql:
+      auth_db:
         condition: service_healthy
     env_file:
     - .env
     environment:
-      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__HOST: auth_db
       AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
