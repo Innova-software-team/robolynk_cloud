@@ -64,10 +64,10 @@ entries:
   - model: authentik_core.application
     state: present
     identifiers:
-      slug: robolynk-cloud            # stable, human-chosen
+      slug: robolynk            # stable, human-chosen
     attrs:
       name: Robolynk Cloud
-      slug: robolynk-cloud
+      slug: robolynk
       policy_engine_mode: any
       provider: !KeyOf robolynk-provider
 
