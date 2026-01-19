@@ -1,4 +1,4 @@
-package com.example.orderservices.model;
+package com.example.restaurantsevices.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

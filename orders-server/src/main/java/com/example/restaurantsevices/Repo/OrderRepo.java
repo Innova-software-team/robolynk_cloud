@@ -1,8 +1,7 @@
-package com.example.orderservices.Repo;
+package com.example.restaurantsevices.Repo;
 
-
-import jakarta.persistence.criteria.Order;
+import com.example.restaurantsevices.model.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderRepo extends JpaRepository<Order, Long> {
+public interface OrderRepo extends JpaRepository<Orders, Long> {
 }

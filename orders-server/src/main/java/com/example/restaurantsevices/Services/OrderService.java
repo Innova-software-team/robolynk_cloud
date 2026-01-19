@@ -1,6 +1,6 @@
-package com.example.orderservices.Services;
+package com.example.restaurantsevices.Services;
 
-import com.example.orderservices.model.Orders;
+import com.example.restaurantsevices.model.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class OrderService {
-
+    /*
     @Autowired
     private OrderService orderService;
 
@@ -23,7 +23,7 @@ public class OrderService {
     }
     public void deleteOrderById(Long id) {
         orderService.deleteOrderById(id);
-    }
+    }*/
 
 
 
