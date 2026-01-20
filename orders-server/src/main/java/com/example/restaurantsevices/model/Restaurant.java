@@ -1,9 +1,11 @@
 package com.example.restaurantsevices.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 @Entity
 public class Restaurant {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
@@ -50,12 +52,12 @@ public class Restaurant {
     public void setLongitude(int longitude) {
         this.longitude = longitude;
     }
+
     public Restaurant(){
 
     }
 
-    public Restaurant(Long id, String name, String address, int latitude, int longitude) {
-        this.id = id;
+    public Restaurant(String name, String address, int latitude, int longitude) {
         this.name = name;
         this.address = address;
         this.latitude = latitude;

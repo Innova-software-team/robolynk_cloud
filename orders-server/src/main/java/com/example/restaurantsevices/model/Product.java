@@ -1,9 +1,11 @@
 package com.example.restaurantsevices.model;
 import jakarta.persistence.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Entity
-public class Products {
+public class Product {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long restaurant_id;
@@ -41,11 +43,12 @@ public class Products {
     public void setProduct_price(Long product_price) {
         this.product_price = product_price;
     }
-    public Products() {
+
+    public Product() {
 
     }
-    public Products(Long id, Long restaurant_id, String product_name, Long product_price) {
-        this.id = id;
+
+    public Product(Long restaurant_id, String product_name, Long product_price) {
         this.restaurant_id = restaurant_id;
         this.product_name = product_name;
         this.product_price = product_price;

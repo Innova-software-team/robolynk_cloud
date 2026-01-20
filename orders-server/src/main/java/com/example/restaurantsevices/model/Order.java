@@ -1,13 +1,13 @@
 package com.example.restaurantsevices.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
-public class Orders {
+@Table(name="orders") // We cannot call this table order since order is a reserved keyword in postgres.
+public class Order {
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private long user_id;
@@ -15,7 +15,7 @@ public class Orders {
     private double total_price;
     private String payment_status;
 
-    public Orders() {
+    public Order() {
 
     }
 
@@ -59,8 +59,7 @@ public class Orders {
         this.id = id;
     }
 
-    public Orders(long id, String payment_status, long user_id, double total_price, long cart_id) {
-        this.id = id;
+    public Order(String payment_status, long user_id, double total_price, long cart_id) {
         this.payment_status = payment_status;
         this.user_id = user_id;
         this.total_price = total_price;

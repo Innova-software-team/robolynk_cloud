@@ -1,6 +1,6 @@
 package com.example.restaurantsevices.Controllers;
 import com.example.restaurantsevices.Repo.ProductRepo;
-import com.example.restaurantsevices.model.Products;
+import com.example.restaurantsevices.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,12 +12,12 @@ public class ProductController {
     private ProductRepo productRepo;
 
     @PostMapping
-    public Products addProduct(@RequestBody Products products) {
-        return productRepo.save(products);
+    public Product addProduct(@RequestBody Product product) {
+        return productRepo.save(product);
     }
 
     @GetMapping
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepo.findAll();
     }
 }

@@ -1,7 +1,7 @@
 package com.example.restaurantsevices.Repo;
 
-import com.example.restaurantsevices.model.Products;
+import com.example.restaurantsevices.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepo extends JpaRepository<Products, Long> {
+public interface ProductRepo extends JpaRepository<Product, Long> {
 }
