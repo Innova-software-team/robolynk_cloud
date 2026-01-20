@@ -31,7 +31,7 @@ public class Cart {
 
     public Cart addProduct(Product product) {
         cartProducts.stream()
-                .filter((cp) -> cp.getProduct() == product)
+                .filter((cp) -> cp.getProduct().equals(product))
                 .findFirst()
                 .ifPresentOrElse(
                 cp -> cp.setQuantity(cp.getQuantity() + 1),
