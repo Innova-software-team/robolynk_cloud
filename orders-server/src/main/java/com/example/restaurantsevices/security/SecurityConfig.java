@@ -26,7 +26,7 @@ public class SecurityConfig {
                             "/v3/api-docs/**"
                     ).permitAll()
                     .requestMatchers(
-                            "/restaurants"
+                            "/restaurants/**"
                     ).permitAll()
                     .anyRequest().authenticated()
             )
