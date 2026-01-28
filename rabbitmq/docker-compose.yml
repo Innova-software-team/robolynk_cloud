@@ -1,0 +1,13 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+
+    ports:
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
+
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-user}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:-password}
+
+    env_file:
+      - .env
