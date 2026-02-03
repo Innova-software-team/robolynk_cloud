@@ -38,7 +38,7 @@ public class PaymentController {
             return ResponseEntity.status(400).body("No current order found for user.");
         }
 
-        return ResponseEntity.status(302).header("Location", order.getCheckout_url()).build();
+        return ResponseEntity.status(302).header("Location", order.getCheckoutUrl()).build();
     }
 
     @RequestMapping(value = "/webhook", method = RequestMethod.POST)

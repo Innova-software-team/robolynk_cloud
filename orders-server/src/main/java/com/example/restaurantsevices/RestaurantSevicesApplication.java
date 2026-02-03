@@ -46,9 +46,9 @@ public class RestaurantSevicesApplication implements CommandLineRunner {
         // Create dummpy products
         System.out.println("Creating dummy product...");
         Product product1 = new Product();
-        product1.setProduct_name("Dummy Pizza");
+        product1.setProductName("Dummy Pizza");
         product1.setRestaurant(restaurant);
-        product1.setProduct_price(999l);
+        product1.setProductPrice(999L);
         
         product1 = productService.addProduct(product1);
 

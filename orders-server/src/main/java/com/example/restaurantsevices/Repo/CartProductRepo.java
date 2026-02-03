@@ -15,10 +15,10 @@ public interface CartProductRepo extends JpaRepository<CartProduct, Long> {
         FROM CartProduct cp
         WHERE cp.cart.id = :cartId
     """)
-    Set<Product> findProductsByCart_Id(@Param("cartId") long cartId);
+    Set<Product> findProductsByCartId(@Param("cartId") long cartId);
 
     @Query("""
-        SELECT COALESCE(SUM(cp.product.product_price * cp.quantity), 0)
+        SELECT COALESCE(SUM(cp.product.productPrice * cp.quantity), 0)
         FROM CartProduct cp
         WHERE cp.cart = :cart
     """)

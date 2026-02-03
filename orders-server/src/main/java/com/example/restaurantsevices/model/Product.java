@@ -11,8 +11,8 @@ public class Product {
     @ManyToOne
     @JoinColumn
     private Restaurant restaurant;
-    private String product_name;
-    private Long product_price;
+    private String productName;
+    private Long productPrice;
 
     public Long getId() {
         return id;
@@ -30,30 +30,30 @@ public class Product {
         this.restaurant = restaurant;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Long getProduct_price() {
-        return product_price;
+    public Long getProductPrice() {
+        return productPrice;
     }
 
-    public void setProduct_price(Long product_price) {
-        this.product_price = product_price;
+    public void setProductPrice(Long productPrice) {
+        this.productPrice = productPrice;
     }
 
     public Product() {
 
     }
 
-    public Product(Restaurant restaurant, String product_name, Long product_price) {
+    public Product(Restaurant restaurant, String productName, Long productPrice) {
         this.restaurant = restaurant;
-        this.product_name = product_name;
-        this.product_price = product_price;
+        this.productName = productName;
+        this.productPrice = productPrice;
     }
 
 }

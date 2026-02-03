@@ -17,38 +17,38 @@ public class Order {
     @OneToOne
     @JoinColumn
     private Cart cart;
-    private double total_price;
-    private String payment_status;
+    private double totalPrice;
+    private String paymentStatus;
     // needs longer length to accommodate stripe checkout url
     @Column(length = 1000)
-    private String checkout_url;
+    private String checkoutUrl;
 
     public Order() {
 
     }
 
-    public String getPayment_status() {
-        return payment_status;
+    public String getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setPayment_status(String payment_status) {
-        this.payment_status = payment_status;
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
-    public double getTotal_price() {
-        return total_price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(double total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public String getCheckout_url() {
-        return checkout_url;
+    public String getCheckoutUrl() {
+        return checkoutUrl;
     }
 
-    public void setCheckout_url(String checkout_url) {
-        this.checkout_url = checkout_url;
+    public void setCheckoutUrl(String checkoutUrl) {
+        this.checkoutUrl = checkoutUrl;
     }
 
     public Cart getCart() {
@@ -75,11 +75,11 @@ public class Order {
         this.id = id;
     }
 
-    public Order(String payment_status, User user, double total_price, Cart cart, String checkout_url) {
-        this.payment_status = payment_status;
+    public Order(String paymentStatus, User user, double totalPrice, Cart cart, String checkoutUrl) {
+        this.paymentStatus = paymentStatus;
         this.user = user;
-        this.total_price = total_price;
+        this.totalPrice = totalPrice;
         this.cart = cart;
-        this.checkout_url = checkout_url;
+        this.checkoutUrl = checkoutUrl;
     }
 }

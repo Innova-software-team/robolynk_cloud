@@ -46,7 +46,7 @@ public class CartService {
 
     public Optional<Set<Product>> findProductsByCartId(long cartId) {
         return cartRepo.findById(cartId)
-                .map(cart -> cartProductRepo.findProductsByCart_Id(cartId));
+                .map(cart -> cartProductRepo.findProductsByCartId(cartId));
     }
 
     public Optional<Cart> addProductToCart(long cartId, Product product) {

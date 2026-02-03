@@ -95,10 +95,10 @@ public class StripePaymentService implements PaymentService {
                 .setPriceData(
                     SessionCreateParams.LineItem.PriceData.builder()
                         .setCurrency("gbp")
-                        .setUnitAmount((long)(product.getProduct_price() * 100))
+                        .setUnitAmount((long)(product.getProductPrice() * 100))
                         .setProductData(
                             SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                                    .setName(product.getProduct_name())
+                                    .setName(product.getProductName())
                                     .build()
                         )
                         .build()

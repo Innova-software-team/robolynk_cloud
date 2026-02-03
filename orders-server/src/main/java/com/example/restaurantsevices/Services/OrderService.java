@@ -46,7 +46,7 @@ public class OrderService {
         }
 
         // Ensure cart is not currently associated with an order
-        if (orderRepo.existsByCart_Id(cart.getId())) {
+        if (orderRepo.existsByCartId(cart.getId())) {
             throw new IllegalStateException("An order already exists for this cart");
         }
 
@@ -62,17 +62,17 @@ public class OrderService {
 
         // Require payment for the order and store checkout url
         String checkoutUrl = paymentService.initiatePaymentFlow(order);
-        order.setCheckout_url(checkoutUrl);
+        order.setCheckoutUrl(checkoutUrl);
         return orderRepo.save(order);
     }
     public List<Order> getAllOrders() { return orderRepo.findAll(); }
     public Order getOrderById(Long id) { return orderRepo.findById(id).orElse(null); }
     public void deleteOrderById(Long id) { orderRepo.deleteById(id); }
 
-    public Order getLatestOrderByUserId(String userId) { return orderRepo.findTopByUser_IdOrderByIdDesc(userId); }
+    public Order getLatestOrderByUserId(String userId) { return orderRepo.findTopByUserIdOrderByIdDesc(userId); }
 
     public Order getByCart(Cart curruntCart) {
-        return orderRepo.findByCart_Id(curruntCart.getId());
+        return orderRepo.findByCartId(curruntCart.getId());
     }
     public void cancelOrder(Order order) {
         /// Current cart is associated with a failed order.
@@ -93,7 +93,7 @@ public class OrderService {
             throw new IllegalStateException("Authorised order id does not exist: " + orderId);
         }
         
-        order.setPayment_status("AUTHORIZED");
+        order.setPaymentStatus("AUTHORIZED");
         orderRepo.save(order);
 
         /// TODO: Create delivery request
