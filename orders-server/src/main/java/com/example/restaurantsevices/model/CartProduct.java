@@ -16,6 +16,7 @@ public class CartProduct {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable=false)
+    @JsonIgnore
     private Cart cart;
 
     @ManyToOne(fetch = FetchType.LAZY)
