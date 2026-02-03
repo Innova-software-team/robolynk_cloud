@@ -2,6 +2,7 @@ package com.example.restaurantsevices.Services;
 
 import com.example.restaurantsevices.Repo.RestaurantRepo;
 import com.example.restaurantsevices.model.Restaurant;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,13 +12,13 @@ import com.google.maps.PlacesApi;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
 import com.google.maps.model.PlacesSearchResponse;
-import com.google.maps.model.PlacesSearchResult;
 import com.google.maps.model.PlaceType;
 
 import java.util.List;
 
 @Service
 public class RestaurantService {
+    private static RestaurantService instance;
 
     @Autowired
     private RestaurantRepo restaurantRepo;
@@ -27,6 +28,15 @@ public class RestaurantService {
         this.context = new GeoApiContext.Builder()
                 .apiKey(apikey)
                 .build();
+    }
+
+    @PostConstruct
+    private void initInstance() {
+        instance = this;
+    }
+
+    public static RestaurantService getInstance() {
+        return instance;
     }
     public PlacesSearchResponse getNearbyRestaurants(String address, int radiusInMeters) throws Exception {
         GeocodingResult[] results = GeocodingApi.geocode(context, address).await();

@@ -1,7 +1,6 @@
 package com.example.restaurantsevices.Controllers;
 import com.example.restaurantsevices.Repo.RestaurantRepo;
 import com.example.restaurantsevices.Services.RestaurantService;
-import com.example.restaurantsevices.model.Product;
 import com.example.restaurantsevices.model.Restaurant;
 import com.google.maps.model.PlacesSearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;

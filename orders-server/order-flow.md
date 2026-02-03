@@ -1,0 +1,19 @@
+- User clicks checkout 
+- orderController receives post request
+- orderController calls orderService.createOrder(userId)
+    - orderService checks if user's current cart is already linked to an order: if order exists for this cart, return error.
+    - orderService creates order object
+    - orderService calls paymentService.initiatePaymentFlow(order)
+        - paymentService returns a stripe checkout url
+    - orderService stores checkout url on order
+    - orderService returns order
+- orderController redirects to /checkout and returns order
+- /checkout redirects to order.checkout_url to redirect to stripe
+- user completes checkout on stripe page
+- stripe hits paymentService webhook to notify successful payment
+    - paymentService notifies orderService that payment is authorised
+        - orderService marks payment as authorised
+        - orderService triggers delivery request creation: deliveryService.requestDelivery(order)
+            - deliveryService forms delivery request
+            - deliveryService publishes request to a queue
+

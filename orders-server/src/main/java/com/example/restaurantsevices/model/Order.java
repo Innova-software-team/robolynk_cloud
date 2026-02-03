@@ -10,10 +10,18 @@ public class Order {
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long user_id;
-    private long cart_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    @JsonIgnore
+    private User user;
+    @OneToOne
+    @JoinColumn
+    private Cart cart;
     private double total_price;
     private String payment_status;
+    // needs longer length to accommodate stripe checkout url
+    @Column(length = 1000)
+    private String checkout_url;
 
     public Order() {
 
@@ -35,20 +43,28 @@ public class Order {
         this.total_price = total_price;
     }
 
-    public long getCart_id() {
-        return cart_id;
+    public String getCheckout_url() {
+        return checkout_url;
     }
 
-    public void setCart_id(long cart_id) {
-        this.cart_id = cart_id;
+    public void setCheckout_url(String checkout_url) {
+        this.checkout_url = checkout_url;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public long getId() {
@@ -59,10 +75,11 @@ public class Order {
         this.id = id;
     }
 
-    public Order(String payment_status, long user_id, double total_price, long cart_id) {
+    public Order(String payment_status, User user, double total_price, Cart cart, String checkout_url) {
         this.payment_status = payment_status;
-        this.user_id = user_id;
+        this.user = user;
         this.total_price = total_price;
-        this.cart_id = cart_id;
+        this.cart = cart;
+        this.checkout_url = checkout_url;
     }
 }

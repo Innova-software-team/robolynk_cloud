@@ -8,7 +8,9 @@ public class Product {
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long restaurant_id;
+    @ManyToOne
+    @JoinColumn
+    private Restaurant restaurant;
     private String product_name;
     private Long product_price;
 
@@ -20,12 +22,12 @@ public class Product {
         this.id = id;
     }
 
-    public Long getRestaurant_id() {
-        return restaurant_id;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurant_id(Long restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getProduct_name() {
@@ -48,8 +50,8 @@ public class Product {
 
     }
 
-    public Product(Long restaurant_id, String product_name, Long product_price) {
-        this.restaurant_id = restaurant_id;
+    public Product(Restaurant restaurant, String product_name, Long product_price) {
+        this.restaurant = restaurant;
         this.product_name = product_name;
         this.product_price = product_price;
     }

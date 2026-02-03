@@ -29,16 +29,19 @@ public class Cart {
         this.id = id;
     }
 
-    public Cart addProduct(Product product) {
+    public Cart addProduct(Product product, int quantity) {
         cartProducts.stream()
                 .filter((cp) -> cp.getProduct().equals(product))
                 .findFirst()
                 .ifPresentOrElse(
-                cp -> cp.setQuantity(cp.getQuantity() + 1),
-                () -> cartProducts.add(new CartProduct(this, product))
+                cp -> cp.setQuantity(cp.getQuantity() + quantity),
+                () -> cartProducts.add(new CartProduct(this, product, quantity))
         );
 
         return this;
+    }
+    public Cart addProduct(Product product) {
+        return addProduct(product, 1);
     }
 
     public Cart removeProductById(long productId) {
