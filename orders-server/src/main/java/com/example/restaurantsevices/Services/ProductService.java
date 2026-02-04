@@ -34,4 +34,10 @@ public class ProductService {
         productRepo.deleteById(id);
     }
 
+
+
+    public List<Product> getProductsByRestaurantId(Long RestaurantId) {
+        return productRepo.findByRestaurantId(RestaurantId);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.restaurantsevices.Controllers;
 import com.example.restaurantsevices.Repo.ProductRepo;
+import com.example.restaurantsevices.Services.ProductService;
 import com.example.restaurantsevices.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,8 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductRepo productRepo;
+    @Autowired
+    private ProductService productService;
 
     @PostMapping
     public Product addProduct(@RequestBody Product product) {
@@ -19,6 +22,13 @@ public class ProductController {
     @GetMapping
     public List<Product> getAllProducts() {
         return productRepo.findAll();
+    }
+
+
+
+    @GetMapping("/restaurant/{restaurantID}")
+    public List<Product> getMenuByRestaurant(@PathVariable Long restaurantID) {
+        return productService.getProductsByRestaurantId(restaurantID);
     }
 }
 
