@@ -1,0 +1,133 @@
+@startuml
+title Orders Server - UML Class Diagram
+
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+
+package "model" {
+  class User {
+    +id: String
+    +currentCart: Cart
+    +currentOrder: Order
+    +orders: List<Order>
+    +addOrder(order: Order): void
+  }
+
+  class Order {
+    +id: long
+    +user: User
+    +cart: Cart
+    +totalPrice: double
+    +paymentStatus: String
+    +checkoutUrl: String
+  }
+
+  class Cart {
+    +id: long
+    +cartProducts: Set<CartProduct>
+    +addProduct(product: Product, quantity: int): Cart
+    +removeProductById(productId: long): Cart
+  }
+
+  class CartProduct {
+    +id: Long
+    +quantity: int
+    +cart: Cart
+    +product: Product
+  }
+
+  class Product {
+    +id: Long
+    +restaurant: Restaurant
+    +productName: String
+    +productPrice: Long
+  }
+
+  class Restaurant {
+    +id: Long
+    +name: String
+    +address: String
+    +latitude: int
+    +longitude: int
+  }
+}
+
+package "repo" {
+  interface UserRepo
+  interface OrderRepo
+  interface CartRepo
+  interface CartProductRepo
+  interface ProductRepo
+  interface RestaurantRepo
+}
+
+package "services" {
+  class UserService
+  class OrderService
+  class CartService
+  class ProductService
+  class RestaurantService
+}
+
+package "services.payment" {
+  interface PaymentService
+  class StripePaymentService
+}
+
+package "controllers" {
+  class OrderController
+  class PaymentController
+  class CartController
+  class ProductController
+  class RestaurantController
+}
+
+class RestaurantSevicesApplication
+
+' JPA/domain relationships
+User "1" -- "1" Cart : currentCart
+User "1" -- "0..1" Order : currentOrder
+User "1" -- "0..*" Order : orders
+Order "0..*" -- "1" User : user
+Order "1" -- "1" Cart : cart
+Cart "1" -- "0..*" CartProduct : cartProducts
+CartProduct "0..*" -- "1" Cart : cart
+CartProduct "0..*" -- "1" Product : product
+Product "0..*" -- "1" Restaurant : restaurant
+
+' Repositories
+UserRepo ..> User
+OrderRepo ..> Order
+CartRepo ..> Cart
+CartProductRepo ..> CartProduct
+ProductRepo ..> Product
+RestaurantRepo ..> Restaurant
+
+' Service dependencies
+UserService ..> UserRepo
+OrderService ..> OrderRepo
+OrderService ..> UserService
+OrderService ..> CartService
+OrderService ..> StripePaymentService
+CartService ..> CartRepo
+CartService ..> CartProductRepo
+CartService ..> UserService
+ProductService ..> ProductRepo
+RestaurantService ..> RestaurantRepo
+StripePaymentService ..|> PaymentService
+StripePaymentService ..> OrderService
+
+' Controller dependencies
+OrderController ..> OrderService
+PaymentController ..> StripePaymentService
+PaymentController ..> UserService
+CartController ..> CartService
+ProductController ..> ProductRepo
+RestaurantController ..> RestaurantRepo
+RestaurantController ..> RestaurantService
+
+RestaurantSevicesApplication ..> UserService
+RestaurantSevicesApplication ..> ProductService
+RestaurantSevicesApplication ..> RestaurantService
+
+@enduml
